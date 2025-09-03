@@ -4,8 +4,7 @@
 
 int main()
 {
-    Board board;
-    board.show();
+
 
     return 0;
 }

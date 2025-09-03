@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "../include/utilities.hpp"
+#include "../include/style.hpp"
 
-
+// Board.show()
 void horizontal_row(int columns)
 {
     int row_size = columns * 4 + 1;
