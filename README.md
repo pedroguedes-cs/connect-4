@@ -16,7 +16,7 @@ Play against a friend or try the **1 player mode**.
 
 ## 🚀 Roadmap
 - [ ] Core code (game loop, board, win check)
-- [ ] Add modes (1 player vs CPU, variations)
+- [ ] Add modes (1 player, 2 players)
 
 
 ## ⚖️ License
