@@ -31,7 +31,11 @@ Board::Board(int rows, int columns)
 
 void Board::show()
 {
+    print_indexes(columns);
+
     horizontal_row(columns);
+
+    std::cout << "\n";
 
     for (int r = 0; r < rows; r++)
     {
