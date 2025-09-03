@@ -18,13 +18,11 @@ Play against a friend or try the **1 player mode**.
 - [ ] Core code (game loop, board, win check)
 - [ ] Add modes (1 player vs CPU, variations)
 
----
-
 
 ## ⚖️ License
 This project is licensed under the [MIT License](LICENSE).
 
----
+
 
 ## 🚧 Status
 Project under development
