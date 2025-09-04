@@ -1,10 +1,11 @@
-#include "../include/board.hpp"
-#include "../include/utilities.hpp"
+#include "../include/game.hpp"
+
 
 
 int main()
 {
-
+    Game game;
+    game.run();
 
     return 0;
 }
