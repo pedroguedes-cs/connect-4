@@ -146,11 +146,26 @@ void Board::show() const
         {
             if (c == 0)
             {
-                std::cout << "| " << grid[r][c] << " |";
+                if (grid[r][c] == '-')
+                {
+                    std::cout << "| " << ' ' << " |";
+                }
+                else
+                {
+                    std::cout << "| " << grid[r][c] << " |";
+                }
+               
             }
             else
             {
-                std::cout << " " << grid[r][c] << " |";
+                if (grid[r][c] == '-')
+                {
+                    std::cout << " " << ' ' << " |";
+                }
+                else
+                {
+                    std::cout << " " << grid[r][c] << " |";
+                }
             }
         }
 
