@@ -36,6 +36,7 @@ void Game::run()
         switch(choice)
         {
             case 1:
+                round = 0;
                 gameover = false;
                 has_winner = false;
                 board.clear();

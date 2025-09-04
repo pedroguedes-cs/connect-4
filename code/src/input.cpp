@@ -2,6 +2,47 @@
 
 #include "../include/input.hpp"
 
+std::string strip(std::string text) 
+{
+    bool before = true;
+    std::string stripl = "";
+
+    for (int i = 0; i < text.size(); i++)
+    {
+        if (text[i] != ' ')
+        {
+            before = false;
+        }
+
+        if (text[i] == false)
+        {
+            stripl += text[i];
+        }
+    }
+
+    bool after = true;
+    std::string stripr = "";
+
+    for (int i = text.size(); i >= 0; i--)
+    {
+        stripl = text[i] + stripl;
+    }
+
+    return stripl;
+}
+
+std::string upper(std::string text)
+{
+    for (int i = 0; i < text.size(); i++)
+    {
+        if (text[i] >= 'a' && text[i] <= 'z')
+        {
+            text[i] += 'A' - 'a';
+        }
+    }
+
+    return text;
+}
 
 bool is_integer(std::string number)
 {
@@ -58,7 +99,7 @@ std::string read_name(std::string message, std::string error_message)
 
         if (getline(std::cin,name) && !name.empty())
         {
-            return name;
+            return strip(upper(name));
         }
 
         std::cout << error_message << "\n";

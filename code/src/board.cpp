@@ -116,6 +116,11 @@ bool Board::set(int column, char character)
 
 void Board::clear()
 {
+    for (auto &p : drop_positions)
+    {
+        p.second = rows;
+    }
+
     for (int r = 0; r < rows; r++)
     {
         for (int c = 0; c < columns; c++)
