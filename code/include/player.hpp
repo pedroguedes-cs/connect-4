@@ -19,6 +19,6 @@ class Player
         char get_symbol() const;
 
         // Setters
-        void set_name(std::string);
+        void set_name(std::string name);
         void set_symbol(char symbol);
 };

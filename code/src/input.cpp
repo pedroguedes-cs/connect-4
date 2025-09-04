@@ -48,7 +48,7 @@ int read_choice(std::string message, std::string error_message, int end_answer_r
     }
 }
 
-std::string read_name (std::string& message, std::string& error_message)
+std::string read_name(std::string message, std::string error_message)
 {
     std::string name;
 

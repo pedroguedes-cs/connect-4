@@ -6,4 +6,5 @@ struct Play
 {
     char symbol;
     Position position;
+
 };

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "../include/style.hpp"
 
@@ -20,6 +21,37 @@ void print_line()
     std::cout << "\n\n---------------------------------------------------------------------------\n\n\n";
 }
 
+
+// Messages
+void print_round(int round, std::string name, char symbol)
+{
+    std::cout << "\nROUND " << round << " [ " << name << " | " << symbol << " ]\n\n\n";
+}
+
+void print_invalid_play()
+{
+    std::cout << "That column is already stuffed! Try another one.\n";
+}
+
+void print_winner(std::string name)
+{
+    std::cout << "And the winner is... " << name << "! Four in a row, unstoppable!\n";
+}
+
+void print_draw()
+{
+    std::cout << "It's a tie! The board is full, but the glory is empty.\n";
+}
+
+void print_exiting()
+{
+    std::cout << "Closing the game... packing up the pieces.\n";
+}
+
+void print_bye()
+{
+    std::cout << "\nGoodbye, challenger! Come back for another round.\n\n\n\n";
+}
 
 
 // Board.show()

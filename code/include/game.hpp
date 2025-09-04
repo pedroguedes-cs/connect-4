@@ -5,7 +5,7 @@
 
 class Game
 {
-    int rounds;
+    int round;
     Board board;
     Player player1;
     Player player2;

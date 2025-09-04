@@ -24,12 +24,15 @@ class Board
         Board(int rows, int columns);
 
         // Gameover
-        bool is_full() const;
+        bool is_full();
         char check_win() const;
 
         // Getters
+        int get_rows() const;
+        int get_columns() const;
         char get_symbol(int row, int column) const;
-        int get_drop_position(int column) const;
+        int get_drop_position(int column);
+        
 
         // Setters
         bool set(int column, char character);

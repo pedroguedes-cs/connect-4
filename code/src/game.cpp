@@ -4,7 +4,6 @@
 #include "../include/game.hpp"
 #include "../include/input.hpp"
 #include "../include/menu.hpp"
-#include "../include/message.hpp"
 #include "../include/play.hpp"
 #include "../include/player.hpp"
 #include "../include/position.hpp"
@@ -12,13 +11,14 @@
 
 Game::Game()
 {
-    rounds = 1;
+    round = 0;
     player1 = {"PLAYER 1", 'x'};
     player2 = {"PLAYER 2", 'o'};
 }
 
 void Game::run()
 {
+    bool gameover;
     bool has_winner;
     std::string name_winner;
     int choice;
@@ -36,6 +36,7 @@ void Game::run()
         switch(choice)
         {
             case 1:
+                gameover = false;
                 has_winner = false;
                 board.clear();
 
@@ -45,15 +46,51 @@ void Game::run()
 
                 print_line();
 
-                while(!has_winner && !board.is_full())
+                while(true)
                 {
-                    print_round();
+                    Player current_player;
 
-                    board.show;
+                    for (int turn = 0; turn < 2; turn++)
+                    {
+                        if (turn == 0)
+                        {
+                            round++;
+                            current_player = player1;
+                        }
+                        else
+                        {
+                            current_player = player2;
+                        }
 
-                    print_round();
+                        print_round(round, current_player.get_name(), current_player.get_symbol());
+                        board.show();
+                        while (!board.set(read_choice("Column: ", "Please try again a valid number.", board.get_columns()) - 1, current_player.get_symbol()))
+                        {
+                            print_invalid_play();
+                        }
 
-                    board.show();
+                        if (board.check_win() == current_player.get_symbol())
+                        {
+                            has_winner = true;
+                            name_winner = current_player.get_name();
+                            gameover = true;
+                            break;
+                        }
+                        
+                        if (board.is_full())
+                        {
+                            gameover = true;
+                            break;
+                        }
+
+                        print_line();
+                    }
+
+                    if (gameover)
+                    {
+                        break;
+                    }
+
                 }
 
                 print_line();
@@ -74,13 +111,14 @@ void Game::run()
                 break;
 
             case 3:
+                exit = true;
                 print_exiting();
                 break;
         }
 
         print_line();
 
-        if (exit == false)
+        if (exit)
         {
             break;
         }

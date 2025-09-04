@@ -4,4 +4,5 @@ struct Position
 {
     int row;
     int column;
+
 };

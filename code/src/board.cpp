@@ -49,7 +49,7 @@ Board::Board(int rows, int columns)
 }
 
 // Gameover
-bool Board::is_full() const
+bool Board::is_full() 
 {
     bool full = true;
 
@@ -78,12 +78,22 @@ char Board::check_win() const
 }
 
 // Getters
+int Board::get_rows() const
+{
+    return rows;
+}
+
+int Board::get_columns() const
+{
+    return columns;
+}
+
 char Board::get_symbol(int row, int column) const
 {
     return grid[row][column];
 }
 
-int Board::get_drop_position(int column) const
+int Board::get_drop_position(int column) 
 {
     return drop_positions[column];
 }
