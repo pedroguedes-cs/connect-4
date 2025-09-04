@@ -14,7 +14,7 @@ std::string strip(std::string text)
             before = false;
         }
 
-        if (text[i] == false)
+        if (before == false)
         {
             stripl += text[i];
         }
@@ -23,12 +23,20 @@ std::string strip(std::string text)
     bool after = true;
     std::string stripr = "";
 
-    for (int i = text.size(); i >= 0; i--)
+    for (int i = stripl.size() - 1; i >= 0; i--)
     {
-        stripl = text[i] + stripl;
+        if (stripl[i] != ' ')
+        {
+            after = false;
+        }
+
+        if (after == false)
+        {
+            stripr = stripl[i] + stripr;
+        }
     }
 
-    return stripl;
+    return stripr;
 }
 
 std::string upper(std::string text)

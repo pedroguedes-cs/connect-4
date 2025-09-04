@@ -118,7 +118,7 @@ void Board::clear()
 {
     for (auto &p : drop_positions)
     {
-        p.second = rows;
+        p.second = rows - 1;
     }
 
     for (int r = 0; r < rows; r++)
