@@ -65,17 +65,172 @@ bool Board::is_full()
     return full;
 }
 
-char Board::check_win() const
+char Board::check_win() 
 {
     char character = last_play.symbol;
 
-    if (check_row(last_play, rows, columns, grid) == character || check_column(last_play, rows, columns, grid) == character || check_primary_diagonal(last_play, rows, columns, grid) == character || check_secundary_diagonal(last_play, rows, columns, grid) == character)
+    if (this->check_row() == character || this->check_column() == character || this->check_primary_diagonal() == character || this->check_secundary_diagonal() == character)
     {
         return character;
     }
 
     return '-';
 }
+
+char Board::check_row()
+{
+    int character = last_play.symbol;
+    int counter = 0;
+
+    for (int c = last_play.position.column - 3; c <= last_play.position.column + 3; c++)
+    {
+        if (c < 0 || c >= columns)
+        {
+            continue;
+        }
+
+        if (grid[last_play.position.row][c] == character)
+        {
+            counter++;
+        } 
+
+        else 
+        {
+            counter = 0;
+        }
+
+        if (counter == 4)
+        {
+            Position begin = {last_play.position.row, c - 3};
+            Position end = {last_play.position.row, c};
+            this->winner_board(begin, end);
+            return character;
+        }
+    }
+
+    return '-';
+}
+
+char Board::check_column()
+{
+    int character = last_play.symbol;
+    int counter = 0;
+
+    for (int r = last_play.position.row - 3; r <= last_play.position.row + 3; r++)
+    {
+        if (r < 0 || r >= rows)
+        {
+            continue;
+        }
+
+        if (grid[r][last_play.position.column] == character)
+        {
+            counter++;
+        } 
+
+        else 
+        {
+            counter = 0;
+        }
+
+        if (counter == 4)
+        {
+            Position begin = {r - 3, last_play.position.column};
+            Position end = {r, last_play.position.column};
+            this->winner_board(begin, end);
+            return character;
+        }
+    }
+
+    return '-';
+}
+
+char Board::check_primary_diagonal()
+{
+    int character = last_play.symbol;
+    int counter = 0;
+
+    int runner_row = last_play.position.row - 3;
+    int runner_column = last_play.position.column - 3;
+
+
+    while (runner_row <= last_play.position.row + 3)
+    {
+        if (runner_row < 0 || runner_row >= rows || runner_column < 0 || runner_column >= columns)
+        {
+            runner_row++;
+            runner_column++;
+            continue;
+        }
+
+        if (grid[runner_row][runner_column] == character)
+        {
+            counter++;
+        } 
+
+        else
+        {
+            counter = 0;
+        }
+
+        if (counter == 4)
+        {
+            Position begin = {runner_row - 3, runner_column - 3};
+            Position end = {runner_row, runner_column};
+            this->winner_board(begin, end);
+            return character;
+        }
+
+        runner_row++;
+        runner_column++;
+    }
+
+    return '-';
+}
+
+char Board::check_secundary_diagonal()
+{
+    int character = last_play.symbol;
+    int counter = 0;
+
+    int runner_row = last_play.position.row + 3;
+    int runner_column = last_play.position.column - 3;
+
+
+    while (runner_row >= last_play.position.row - 3)
+    {
+        if (runner_row < 0 || runner_row >= rows || runner_column < 0 || runner_column >= columns)
+        {
+            runner_row--;
+            runner_column++;
+            continue;
+        }
+
+        if (grid[runner_row][runner_column] == character)
+        {
+            counter++;
+        } 
+
+        else
+        {
+            counter = 0;
+        }
+
+        if (counter == 4)
+        {
+            Position begin = {runner_row + 3, runner_column - 3};
+            Position end = {runner_row, runner_column};
+            this->winner_board(begin, end);
+            return character;
+        }
+
+        runner_row--;
+        runner_column++;
+    }
+
+    return '-';
+}
+
 
 // Getters
 int Board::get_rows() const
@@ -130,6 +285,45 @@ void Board::clear()
     }
 }
 
+void Board::winner_board(Position begin, Position end)
+{
+    int runner_row = begin.row;
+    int runner_column = begin.column;
+
+    // Row
+    if (begin.row == end.row)
+    {
+        for (int i = 0; i < 4; i++, runner_column++)
+        {
+            grid[runner_row][runner_column] = '*';
+        }
+    }
+    //Column
+    else if (begin.column == end.column)
+    {
+        for (int i = 0; i < 4; i++, runner_row++)
+        {
+            grid[runner_row][runner_column] = '*';
+        }
+    }
+    // Primary Diagonal
+    else if (begin.row < end.row)
+    {
+        for (int i = 0; i < 4; i++, runner_row++, runner_column++)
+        {
+            grid[runner_row][runner_column] = '*';
+        }
+    }
+    // Secondary Diagonal
+    else 
+    {
+        for (int i = 0; i < 4; i++, runner_row--, runner_column++)
+        {
+            grid[runner_row][runner_column] = '*';
+        }
+    }
+}
+
 // Printers
 void Board::show() const
 {
@@ -179,148 +373,3 @@ void Board::show() const
 
 
 
-
-
-// Check win funtions
-
-char check_row(Play last, int rows, int columns, std::vector<std::vector<char>> grid)
-{
-    int character = last.symbol;
-    int counter = 0;
-
-    for (int c = last.position.column - 3; c <= last.position.column + 3; c++)
-    {
-        if (c < 0 || c >= columns)
-        {
-            continue;
-        }
-
-        if (grid[last.position.row][c] == character)
-        {
-            counter++;
-        } 
-
-        else 
-        {
-            counter = 0;
-        }
-
-        if (counter == 4)
-        {
-            return character;
-        }
-    }
-
-    return '-';
-}
-
-char check_column(Play last, int rows, int columns, std::vector<std::vector<char>> grid)
-{
-    int character = last.symbol;
-    int counter = 0;
-
-    for (int r = last.position.row - 3; r <= last.position.row + 3; r++)
-    {
-        if (r < 0 || r >= rows)
-        {
-            continue;
-        }
-
-        if (grid[r][last.position.column] == character)
-        {
-            counter++;
-        } 
-
-        else 
-        {
-            counter = 0;
-        }
-
-        if (counter == 4)
-        {
-            return character;
-        }
-    }
-
-    return '-';
-}
-
-char check_primary_diagonal(Play last, int rows, int columns, std::vector<std::vector<char>> grid)
-{
-    int character = last.symbol;
-    int counter = 0;
-
-    int runner_row = last.position.row - 3;
-    int runner_column = last.position.column - 3;
-
-
-    while (runner_row <= last.position.row + 3)
-    {
-        if (runner_row < 0 || runner_row >= rows || runner_column < 0 || runner_column >= columns)
-        {
-            runner_row++;
-            runner_column++;
-            continue;
-        }
-
-        if (grid[runner_row][runner_column] == character)
-        {
-            counter++;
-        } 
-
-        else
-        {
-            counter = 0;
-        }
-
-        if (counter == 4)
-        {
-            return character;
-        }
-
-        runner_row++;
-        runner_column++;
-    }
-
-    return '-';
-}
-
-char check_secundary_diagonal(Play last, int rows, int columns, std::vector<std::vector<char>> grid)
-{
-    int character = last.symbol;
-    int counter = 0;
-
-    int runner_row = last.position.row + 3;
-    int runner_column = last.position.column - 3;
-
-
-    while (runner_row >= last.position.row - 3)
-    {
-        if (runner_row < 0 || runner_row >= rows || runner_column < 0 || runner_column >= columns)
-        {
-            runner_row--;
-            runner_column++;
-            continue;
-        }
-
-        if (grid[runner_row][runner_column] == character)
-        {
-            counter++;
-        } 
-
-        else
-        {
-            counter = 0;
-        }
-
-        if (counter == 4)
-        {
-            return character;
-        }
-
-        runner_row--;
-        runner_column++;
-    }
-
-    return '-';
-}

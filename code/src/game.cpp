@@ -98,10 +98,14 @@ void Game::run()
 
                 if (has_winner)
                 {
+                    board.show();
+                    print_line();
                     print_winner(name_winner);
                 }
                 else
                 {
+                    board.show();
+                    print_line();
                     print_draw();
                 }
 

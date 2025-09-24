@@ -25,7 +25,11 @@ class Board
 
         // Gameover
         bool is_full();
-        char check_win() const;
+        char check_win();
+        char check_row();
+        char check_column();
+        char check_primary_diagonal();
+        char check_secundary_diagonal();
 
         // Getters
         int get_rows() const;
@@ -37,6 +41,7 @@ class Board
         // Setters
         bool set(int column, char character);
         void clear();
+        void winner_board(Position begin, Position end);
 
         // Printers
         void show() const;
