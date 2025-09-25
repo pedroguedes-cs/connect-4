@@ -3,7 +3,7 @@
 A simple implementation of the classic **Connect Four** game in **C++** for the terminal.  
 
 ## ▶️ Demo
-[![Connect 4 - Demo](https://img.youtube.com/vi/HOrA5nEC7xU/0.png)](https://youtu.be/HOrA5nEC7xU)
+[![Connect 4 - Demo](assets/thumbnail.png)](https://youtu.be/HOrA5nEC7xU)
 
 ## ⚙️ Build & Run
 
