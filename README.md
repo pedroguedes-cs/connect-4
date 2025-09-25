@@ -1,6 +1,6 @@
-# 🟡🔴 Connect Four - Terminal Game
+# 🟡🔴 Connect 4 - Terminal Game
 
-A simple implementation of the classic **Connect Four** game in **C++** for the terminal.  
+A simple implementation of the classic **Connect 4** game in **C++** for the terminal.  
 
 ## ▶️ Demo
 [![Connect 4 - Demo](assets/thumbnail.png)](https://youtu.be/HOrA5nEC7xU)
