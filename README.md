@@ -1,28 +1,34 @@
 # 🟡🔴 Connect Four - Terminal Game
 
 A simple implementation of the classic **Connect Four** game in **C++** for the terminal.  
-Play against a friend or try the **1 player mode**.
 
+## ▶️ Demo
+[![Connect 4 - Demo](<img width="1280" height="720" alt="CONNECT 4" src="https://github.com/user-attachments/assets/43d81081-be24-4a3b-8d64-43d904c8e799" />
+)](https://youtu.be/HOrA5nEC7xU)
 
-## 🤖 Features
-- Two-player mode
-- 1 player mode
+## ⚙️ Build & Run
 
+### Clone the repository  
+```bash
+git clone https://github.com/your-username/connect-four.git
+cd connect-four
+```
+### Build
+```bash
+# Create and enter build directory
+mkdir build && cd build
 
-## 🎲 How to Play
-- Players choose a column (by number) to drop their piece.
-- The first to connect four pieces in a row wins.
+# Generate build files with CMake
+cmake ..
 
-
-## 🚀 Roadmap
-- [x] Core code (game loop, board, win check)
-- [ ] Add modes (1 player, 2 players)
-
+# Compile the project
+make
+```
+### Run
+```bash
+./bin/connect4
+```
 
 ## ⚖️ License
 This project is licensed under the [MIT License](LICENSE).
 
-
-
-## 🚧 Status
-Project under development
