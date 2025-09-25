@@ -9,8 +9,8 @@ A simple implementation of the classic **Connect 4** game in **C++** for the ter
 
 ### Clone the repository  
 ```bash
-git clone https://github.com/your-username/connect-four.git
-cd connect-four
+git clone https://github.com/pedroguedes-cs/connect-4.git
+cd connect-4
 ```
 ### Build
 ```bash
