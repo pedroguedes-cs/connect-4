@@ -5,6 +5,11 @@ A simple implementation of the classic **Connect 4** game in **C++** for the ter
 ## ▶️ Watch the Demo
 [![Connect 4 - Demo](assets/thumbnail.png)](https://youtu.be/HOrA5nEC7xU)
 
+## 🎮 How It Looks
+![Menu](assets/menu.png)
+![Game](assets/game.png)
+![Winner screen](assets/winner.png)
+
 ## ⚙️ Build & Run
 
 ### Clone the repository  
