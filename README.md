@@ -15,7 +15,8 @@ cd connect-4
 ### Build
 ```bash
 # Create and enter build directory
-mkdir build && cd build
+mkdir build
+cd build
 
 # Generate build files with CMake
 cmake ..
